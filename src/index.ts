@@ -20,12 +20,13 @@ const createUsersTable = async () => {
 
 // createUsersTable();
 
-//inserting data
+//inserting data into users table
 
 const insertUserInTable = async () => {
   await client.connect();
-  const insertQuery = `INSERT INTO users (username, email, password) VALUES ('sarthak', 'sarthak@sarthak.com', 'sarthak1234')`;
-  const res = await client.query(insertQuery);
+  const insertQuery = `INSERT INTO users (username, email, password) VALUES ($1, $2, $3)`;
+  const values = ["sarthak24", "sarthak@gmail.com", "sarthak@1234"]; //provide like this to solve sql injections
+  const res = await client.query(insertQuery, values);
   console.log("insertion successfull : ", res);
 };
 insertUserInTable();
