@@ -29,4 +29,14 @@ const insertUserInTable = async () => {
   const res = await client.query(insertQuery, values);
   console.log("insertion successfull : ", res);
 };
-insertUserInTable();
+// insertUserInTable();
+
+//get users from table
+
+const getUsers = async () => {
+  await client.connect();
+  const res = await client.query(`SELECT * FROM users`);
+  console.log(res.rows);
+};
+
+getUsers();
