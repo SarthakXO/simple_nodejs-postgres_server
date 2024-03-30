@@ -31,7 +31,7 @@ const insertUserInTable = async () => {
 };
 // insertUserInTable();
 
-//get users from table
+//get all users from table
 
 const getUsers = async () => {
   await client.connect();
@@ -39,4 +39,14 @@ const getUsers = async () => {
   console.log(res.rows);
 };
 
-getUsers();
+// getUsers();
+
+//get users with specific email from table
+const getUserFromEmail = async () => {
+  await client.connect();
+  const email = "sarthak@sarthak.com";
+  const queryString = `SELECT * FROM users  WHERE EMAIL=$1`;
+  const res = await client.query(queryString, [email]);
+  console.log(res.rows);
+};
+getUserFromEmail();
