@@ -18,4 +18,14 @@ const createUsersTable = async () => {
   console.log(result);
 };
 
-createUsersTable();
+// createUsersTable();
+
+//inserting data
+
+const insertUserInTable = async () => {
+  await client.connect();
+  const insertQuery = `INSERT INTO users (username, email, password) VALUES ('sarthak', 'sarthak@sarthak.com', 'sarthak1234')`;
+  const res = await client.query(insertQuery);
+  console.log("insertion successfull : ", res);
+};
+insertUserInTable();
